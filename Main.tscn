@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://bgx44eyhb76vh"]
+
+[ext_resource type="Script" uid="uid://b621mnvt3r3n2" path="res://Main.gd" id="1_glv2v"]
+
+[node name="Main" type="Node2D" unique_id=1769590971]
+script = ExtResource("1_glv2v")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=557566243]
+
+[node name="FocusRoot" type="Control" parent="CanvasLayer" unique_id=1717884410]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TabContainer" type="TabContainer" parent="CanvasLayer/FocusRoot" unique_id=768900998]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+switch_on_drag_hover = false

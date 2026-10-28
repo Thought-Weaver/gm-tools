@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bxsaq0jhfp60v"]
+
+[ext_resource type="Script" uid="uid://53grsbg55npr" path="res://AudioManager.gd" id="1_2nh25"]
+
+[node name="AudioManager" type="PanelContainer" unique_id=1653543977]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2nh25")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=638196294]
+layout_mode = 2
+
+[node name="Tree" type="Tree" parent="HBoxContainer" unique_id=314405845]
+layout_mode = 2

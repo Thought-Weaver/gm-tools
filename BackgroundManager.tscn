@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://di1ik3cqpepq2"]
+
+[ext_resource type="Script" uid="uid://cgjtj78airk5p" path="res://BackgroundManager.gd" id="1_3ctca"]
+
+[node name="BackgroundManager" type="PanelContainer" unique_id=419174338]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3ctca")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=7569816]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1536409793]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BackgroundsTree" type="Tree" parent="VBoxContainer/HBoxContainer" unique_id=1974414738]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer" unique_id=1075851839]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/HBoxContainer/MarginContainer" unique_id=1159075870]
+layout_mode = 2
+
+[node name="ImageContainer" type="GridContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/ScrollContainer" unique_id=1539039189]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 4
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer" unique_id=507128930]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PanelContainer" unique_id=1800922694]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PanelContainer/MarginContainer" unique_id=697933705]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="ShowHideDisplayWindowButton" type="Button" parent="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=1415546291]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 24
+text = " Show Display Window "
+
+[node name="SetFullscreenDisplayWindowButton" type="Button" parent="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=2066496768]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 24
+text = " Set Display Window Fullscreen "
