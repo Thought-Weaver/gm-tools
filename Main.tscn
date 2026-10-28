@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://bgx44eyhb76vh"]
 
 [ext_resource type="Script" uid="uid://b621mnvt3r3n2" path="res://Main.gd" id="1_glv2v"]
+[ext_resource type="PackedScene" uid="uid://bxsaq0jhfp60v" path="res://AudioManager.tscn" id="2_r0du0"]
+[ext_resource type="PackedScene" uid="uid://di1ik3cqpepq2" path="res://BackgroundManager.tscn" id="3_cm0pq"]
 
 [node name="Main" type="Node2D" unique_id=1769590971]
 script = ExtResource("1_glv2v")
@@ -22,4 +24,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/tab_separation = 8
+theme_override_font_sizes/font_size = 24
+current_tab = 0
 switch_on_drag_hover = false
+
+[node name="Audio Manager" parent="CanvasLayer/FocusRoot/TabContainer" unique_id=1653543977 instance=ExtResource("2_r0du0")]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Background Manager" parent="CanvasLayer/FocusRoot/TabContainer" unique_id=419174338 instance=ExtResource("3_cm0pq")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
