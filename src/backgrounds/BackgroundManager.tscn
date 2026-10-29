@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://di1ik3cqpepq2"]
 
-[ext_resource type="Script" uid="uid://cgjtj78airk5p" path="res://BackgroundManager.gd" id="1_3ctca"]
+[ext_resource type="Script" uid="uid://cgjtj78airk5p" path="res://src/backgrounds/BackgroundManager.gd" id="1_3ctca"]
 
 [node name="BackgroundManager" type="PanelContainer" unique_id=419174338]
 anchors_preset = 15

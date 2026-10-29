@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://df41q5mpgi3l7"]
+
+[ext_resource type="Theme" uid="uid://cqpmjexd1df3y" path="res://Theme.tres" id="1_6nsqk"]
+[ext_resource type="Script" uid="uid://b5a3y2mhlh4cm" path="res://Track.gd" id="1_ds8md"]
+
+[node name="Track" type="PanelContainer" unique_id=836039998]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -4.0
+offset_right = -460.0
+offset_bottom = -497.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ds8md")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=606055490]
+autoplay = true
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=834808734]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=675716601]
+layout_mode = 2
+
+[node name="TrackNameLabel" type="Label" parent="MarginContainer/HBoxContainer" unique_id=446028000]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+text = "Track Name"
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/HBoxContainer" unique_id=3824391]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_6nsqk")
+
+[node name="TimeRemainingLabel" type="Label" parent="MarginContainer/HBoxContainer" unique_id=2003926117]
+layout_mode = 2
+text = "0:00/0:00"
+
+[node name="VSeparator2" type="VSeparator" parent="MarginContainer/HBoxContainer" unique_id=367401991]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_6nsqk")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=350271390]
+layout_mode = 2
+
+[node name="QuarterVolumeButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1128226690]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "25%"
+
+[node name="HalfVolumeButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=454140233]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "50%"
+
+[node name="LoopButton" type="CheckButton" parent="MarginContainer/HBoxContainer" unique_id=1058563242]
+layout_mode = 2
+text = " Loop "
+
+[node name="FadeOutButton" type="Button" parent="MarginContainer/HBoxContainer" unique_id=1699717593]
+layout_mode = 2
+text = " Fade Out "
+
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/QuarterVolumeButton" to="." method="_on_quarter_volume_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/HalfVolumeButton" to="." method="_on_half_volume_button_pressed"]
+[connection signal="toggled" from="MarginContainer/HBoxContainer/LoopButton" to="." method="_on_loop_button_toggled"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/FadeOutButton" to="." method="_on_fade_out_button_pressed"]
