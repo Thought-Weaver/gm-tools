@@ -1,18 +1,11 @@
 [gd_scene format=3 uid="uid://df41q5mpgi3l7"]
 
-[ext_resource type="Theme" uid="uid://cqpmjexd1df3y" path="res://Theme.tres" id="1_6nsqk"]
-[ext_resource type="Script" uid="uid://b5a3y2mhlh4cm" path="res://Track.gd" id="1_ds8md"]
+[ext_resource type="Script" uid="uid://cprxn1ger0437" path="res://src/audio/Track.gd" id="1_y8p0w"]
 
 [node name="Track" type="PanelContainer" unique_id=836039998]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -4.0
-offset_right = -460.0
-offset_bottom = -497.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("1_ds8md")
+offset_right = 545.0
+offset_bottom = 60.0
+script = ExtResource("1_y8p0w")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=606055490]
 autoplay = true
@@ -35,7 +28,6 @@ text = "Track Name"
 [node name="VSeparator" type="VSeparator" parent="MarginContainer/HBoxContainer" unique_id=3824391]
 layout_mode = 2
 size_flags_horizontal = 3
-theme = ExtResource("1_6nsqk")
 
 [node name="TimeRemainingLabel" type="Label" parent="MarginContainer/HBoxContainer" unique_id=2003926117]
 layout_mode = 2
@@ -44,10 +36,10 @@ text = "0:00/0:00"
 [node name="VSeparator2" type="VSeparator" parent="MarginContainer/HBoxContainer" unique_id=367401991]
 layout_mode = 2
 size_flags_horizontal = 3
-theme = ExtResource("1_6nsqk")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=350271390]
 layout_mode = 2
+alignment = 1
 
 [node name="QuarterVolumeButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1128226690]
 layout_mode = 2

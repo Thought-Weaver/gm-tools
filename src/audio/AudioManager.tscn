@@ -2,16 +2,23 @@
 
 [ext_resource type="Script" uid="uid://53grsbg55npr" path="res://src/audio/AudioManager.gd" id="1_2nh25"]
 
-[node name="AudioManager" type="PanelContainer" unique_id=1653543977]
+[node name="AudioManager" type="PanelContainer" unique_id=1653543977 node_paths=PackedStringArray("tree", "track_container")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2nh25")
+tree = NodePath("HBoxContainer/Tree")
+track_container = NodePath("HBoxContainer/TrackContainer")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=638196294]
 layout_mode = 2
 
 [node name="Tree" type="Tree" parent="HBoxContainer" unique_id=314405845]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
+
+[node name="TrackContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=934706110]
+layout_mode = 2
+size_flags_horizontal = 3

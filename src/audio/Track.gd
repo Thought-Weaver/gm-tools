@@ -1,35 +1,18 @@
-class_name Track
-extends Container
+class_name Track extends Container
 
-@onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
+# -----------------------------------------------------------------------------
+# VARIABLES
+# -----------------------------------------------------------------------------
+
+@export var audio_player: AudioStreamPlayer
+@export var time_remaining_label: Label
+@export var track_name_label: Label
 
 var loop: bool = false
 
-# TODO: Add quick volume options (25%, 50%, 75%, 100%)
-
-func _process(_delta: float):
-	if audio_player.stream != null:
-		var time_remaining_label: Label = $MarginContainer/HBoxContainer/TimeRemainingLabel
-		var time_remaining_str: String = format_seconds_to_str(round(audio_player.get_playback_position()))
-		var total_time_str: String = format_seconds_to_str(round(audio_player.stream.get_length()))
-
-		time_remaining_label.text = "%s/%s" % [time_remaining_str, total_time_str]
-
-
-func format_seconds_to_str(seconds: int):
-	var minutes = floor(seconds / 60)
-	var final_seconds = (seconds - (minutes * 60))
-
-	var minutes_str = str(minutes)
-	var seconds_str = str(final_seconds)
-
-	if minutes < 10:
-		minutes_str = "0%s" % minutes_str
-	if seconds < 10:
-		seconds_str = "0%s" % seconds_str
-	
-	return "%s:%s" % [minutes_str, seconds_str]
-
+# -----------------------------------------------------------------------------
+# INTERNAL CLASS
+# -----------------------------------------------------------------------------
 
 class AudioStreamFactory:
 	static func get_stream(filename: String) -> AudioStream:
@@ -44,10 +27,36 @@ class AudioStreamFactory:
 			_:
 				return AudioStream.new()
 
+# -----------------------------------------------------------------------------
+# FUNCTIONS
+# -----------------------------------------------------------------------------
+
+func _process(_delta: float):
+	if audio_player.stream != null:
+		var time_remaining_str: String = format_seconds_to_str(round(audio_player.get_playback_position()))
+		var total_time_str: String = format_seconds_to_str(round(audio_player.stream.get_length()))
+
+		time_remaining_label.text = "%s/%s" % [time_remaining_str, total_time_str]
+
+
+func format_seconds_to_str(seconds: int):
+	var minutes = floor(seconds / 60.0)
+	var final_seconds = (seconds - (minutes * 60))
+
+	var minutes_str = str(minutes)
+	var seconds_str = str(final_seconds)
+
+	if minutes < 10:
+		minutes_str = "0%s" % minutes_str
+	if seconds < 10:
+		seconds_str = "0%s" % seconds_str
+	
+	return "%s:%s" % [minutes_str, seconds_str]
+
 
 func load_sound(path: String):
 	var track_name: String = path.split("/")[-1].split(".")[0]
-	$MarginContainer/HBoxContainer/TrackNameLabel.text = track_name
+	track_name_label.text = track_name
 
 	var file = FileAccess.open(path, FileAccess.READ)
 
