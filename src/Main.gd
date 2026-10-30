@@ -15,7 +15,3 @@ extends Node2D
 
 # More details on each will be in their respective parent scenes, with a tab
 # container to switch back and forth between the managers in this app as needed.
-
-# -----------------------------------------------------------------------------
-# FUNCTIONS
-# -----------------------------------------------------------------------------

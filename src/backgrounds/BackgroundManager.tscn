@@ -2,63 +2,102 @@
 
 [ext_resource type="Script" uid="uid://cgjtj78airk5p" path="res://src/backgrounds/BackgroundManager.gd" id="1_3ctca"]
 
-[node name="BackgroundManager" type="PanelContainer" unique_id=419174338]
+[node name="BackgroundManager" type="PanelContainer" unique_id=2101451637 node_paths=PackedStringArray("tree", "gallery", "display_window", "display_image", "show_window_button", "fullscreen_button")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3ctca")
+tree = NodePath("HBoxContainer/BackgroundsTree")
+gallery = NodePath("HBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/Gallery")
+display_window = NodePath("DisplayWindow")
+display_image = NodePath("DisplayWindow/Image")
+show_window_button = NodePath("HBoxContainer/VBoxContainer/Controls/ShowHideDisplayWindowButton")
+fullscreen_button = NodePath("HBoxContainer/VBoxContainer/Controls/SetFullscreenDisplayWindowButton")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=7569816]
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=669416172]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1536409793]
+[node name="BackgroundsTree" type="Tree" parent="HBoxContainer" unique_id=1184637963]
+custom_minimum_size = Vector2(270, 0)
 layout_mode = 2
-size_flags_vertical = 3
+hide_root = true
 
-[node name="BackgroundsTree" type="Tree" parent="VBoxContainer/HBoxContainer" unique_id=1974414738]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer" unique_id=1075851839]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=1781159304]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
 
-[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/HBoxContainer/MarginContainer" unique_id=1159075870]
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer" unique_id=224541716]
 layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 12
 
-[node name="ImageContainer" type="GridContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/ScrollContainer" unique_id=1539039189]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1314569115]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
-columns = 4
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer" unique_id=507128930]
-custom_minimum_size = Vector2(0, 150)
+[node name="Gallery" type="ItemList" parent="HBoxContainer/VBoxContainer/HBoxContainer/MarginContainer" unique_id=817596580]
 layout_mode = 2
+size_flags_horizontal = 3
+max_columns = 0
+same_column_width = true
+fixed_column_width = 180
+icon_mode = 0
+fixed_icon_size = Vector2i(160, 100)
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PanelContainer" unique_id=1800922694]
+[node name="Controls" type="HBoxContainer" parent="HBoxContainer/VBoxContainer" unique_id=601667292]
+custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PanelContainer/MarginContainer" unique_id=697933705]
-layout_mode = 2
-theme_override_constants/separation = 16
+theme_override_constants/separation = 24
 alignment = 1
 
-[node name="ShowHideDisplayWindowButton" type="Button" parent="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=1415546291]
+[node name="ShowHideDisplayWindowButton" type="Button" parent="HBoxContainer/VBoxContainer/Controls" unique_id=1423575682]
 layout_mode = 2
 size_flags_vertical = 4
-theme_override_font_sizes/font_size = 24
-text = " Show Display Window "
+toggle_mode = true
+text = "Show Display Window"
 
-[node name="SetFullscreenDisplayWindowButton" type="Button" parent="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=2066496768]
+[node name="SetFullscreenDisplayWindowButton" type="Button" parent="HBoxContainer/VBoxContainer/Controls" unique_id=645449606]
 layout_mode = 2
 size_flags_vertical = 4
-theme_override_font_sizes/font_size = 24
-text = " Set Display Window Fullscreen "
+toggle_mode = true
+text = "Set Display Window Fullscreen"
+
+[node name="DisplayWindow" type="Window" parent="." unique_id=1398843817]
+title = "GM Tools - Backgroud Display"
+initial_position = 2
+size = Vector2i(960, 540)
+visible = false
+min_size = Vector2i(320, 180)
+
+[node name="BlackBackground" type="ColorRect" parent="DisplayWindow" unique_id=895768416]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Image" type="TextureRect" parent="DisplayWindow" unique_id=773366475]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[connection signal="item_activated" from="HBoxContainer/BackgroundsTree" to="." method="_on_tree_item_activated"]
+[connection signal="item_selected" from="HBoxContainer/BackgroundsTree" to="." method="_on_tree_item_selected"]
+[connection signal="item_activated" from="HBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/Gallery" to="." method="_on_gallery_item_activated"]
+[connection signal="toggled" from="HBoxContainer/VBoxContainer/Controls/ShowHideDisplayWindowButton" to="." method="_on_show_window_toggled"]
+[connection signal="toggled" from="HBoxContainer/VBoxContainer/Controls/SetFullscreenDisplayWindowButton" to="." method="_on_fullscreen_toggled"]
+[connection signal="close_requested" from="DisplayWindow" to="." method="_on_display_close_requested"]

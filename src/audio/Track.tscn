@@ -2,65 +2,119 @@
 
 [ext_resource type="Script" uid="uid://cprxn1ger0437" path="res://src/audio/Track.gd" id="1_y8p0w"]
 
-[node name="Track" type="PanelContainer" unique_id=836039998]
-offset_right = 545.0
-offset_bottom = 60.0
+[node name="Track" type="PanelContainer" unique_id=2078189696 node_paths=PackedStringArray("audio_player", "time_remaining_label", "track_name_label", "volume_slider", "pause_button", "loop_button", "fade_duration")]
+offset_right = 1072.0
+offset_bottom = 90.0
+size_flags_horizontal = 3
 script = ExtResource("1_y8p0w")
+audio_player = NodePath("AudioStreamPlayer")
+time_remaining_label = NodePath("MarginContainer/VBoxContainer/InfoContainer/TimeRemainingLabel")
+track_name_label = NodePath("MarginContainer/VBoxContainer/InfoContainer/TrackNameLabel")
+volume_slider = NodePath("MarginContainer/VBoxContainer/ControlsContainer/VolumeContainer/VolumeSlider")
+pause_button = NodePath("MarginContainer/VBoxContainer/InfoContainer/PauseButton")
+loop_button = NodePath("MarginContainer/VBoxContainer/ControlsContainer/LoopContainer/LoopButton")
+fade_duration = NodePath("MarginContainer/VBoxContainer/ControlsContainer/FadeContainer/FadeDuration")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=606055490]
-autoplay = true
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=22983293]
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=834808734]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1161887007]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=675716601]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=842903853]
 layout_mode = 2
+theme_override_constants/separation = 12
 
-[node name="TrackNameLabel" type="Label" parent="MarginContainer/HBoxContainer" unique_id=446028000]
-custom_minimum_size = Vector2(220, 0)
+[node name="InfoContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1851466462]
 layout_mode = 2
-text = "Track Name"
+theme_override_constants/separation = 12
 
-[node name="VSeparator" type="VSeparator" parent="MarginContainer/HBoxContainer" unique_id=3824391]
+[node name="TrackNameLabel" type="Label" parent="MarginContainer/VBoxContainer/InfoContainer" unique_id=91109644]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Track"
+text_overrun_behavior = 3
+
+[node name="TimeRemainingLabel" type="Label" parent="MarginContainer/VBoxContainer/InfoContainer" unique_id=125051844]
+layout_mode = 2
+text = "-00:00 / 00:00"
+
+[node name="PauseButton" type="Button" parent="MarginContainer/VBoxContainer/InfoContainer" unique_id=596704600]
+layout_mode = 2
+toggle_mode = true
+text = "Pause"
+
+[node name="StopButton" type="Button" parent="MarginContainer/VBoxContainer/InfoContainer" unique_id=648878741]
+layout_mode = 2
+text = "Stop"
+
+[node name="ControlsContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=2060101374]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="VolumeContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ControlsContainer" unique_id=1217736570]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TimeRemainingLabel" type="Label" parent="MarginContainer/HBoxContainer" unique_id=2003926117]
+[node name="VolumeLabel" type="Label" parent="MarginContainer/VBoxContainer/ControlsContainer/VolumeContainer" unique_id=2035638115]
 layout_mode = 2
-text = "0:00/0:00"
+text = "Volume"
 
-[node name="VSeparator2" type="VSeparator" parent="MarginContainer/HBoxContainer" unique_id=367401991]
+[node name="VolumeSlider" type="HSlider" parent="MarginContainer/VBoxContainer/ControlsContainer/VolumeContainer" unique_id=113363696]
+custom_minimum_size = Vector2(140, 0)
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_vertical = 4
+tooltip_text = "Volume: 0-100%"
+value = 100.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=350271390]
+[node name="QuarterVolumeButton" type="Button" parent="MarginContainer/VBoxContainer/ControlsContainer/VolumeContainer" unique_id=140582092]
 layout_mode = 2
-alignment = 1
-
-[node name="QuarterVolumeButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1128226690]
-layout_mode = 2
-theme_override_font_sizes/font_size = 8
 text = "25%"
 
-[node name="HalfVolumeButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=454140233]
+[node name="HalfVolumeButton" type="Button" parent="MarginContainer/VBoxContainer/ControlsContainer/VolumeContainer" unique_id=227942107]
 layout_mode = 2
-theme_override_font_sizes/font_size = 8
 text = "50%"
 
-[node name="LoopButton" type="CheckButton" parent="MarginContainer/HBoxContainer" unique_id=1058563242]
+[node name="LoopContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ControlsContainer" unique_id=370672012]
 layout_mode = 2
-text = " Loop "
 
-[node name="FadeOutButton" type="Button" parent="MarginContainer/HBoxContainer" unique_id=1699717593]
+[node name="LoopButton" type="CheckButton" parent="MarginContainer/VBoxContainer/ControlsContainer/LoopContainer" unique_id=2109904003]
 layout_mode = 2
-text = " Fade Out "
+size_flags_horizontal = 3
+text = "Loop"
+alignment = 2
+
+[node name="FadeContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ControlsContainer" unique_id=207446620]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FadeLabel" type="Label" parent="MarginContainer/VBoxContainer/ControlsContainer/FadeContainer" unique_id=1819930999]
+layout_mode = 2
+text = "Fade"
+
+[node name="FadeDuration" type="SpinBox" parent="MarginContainer/VBoxContainer/ControlsContainer/FadeContainer" unique_id=1331740535]
+layout_mode = 2
+max_value = 60.0
+step = 0.1
+value = 2.0
+suffix = "s"
+
+[node name="FadeInButton" type="Button" parent="MarginContainer/VBoxContainer/ControlsContainer/FadeContainer" unique_id=486443067]
+layout_mode = 2
+text = "Fade In"
+
+[node name="FadeOutButton" type="Button" parent="MarginContainer/VBoxContainer/ControlsContainer/FadeContainer" unique_id=2091777170]
+layout_mode = 2
+text = "Fade Out"
 
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/QuarterVolumeButton" to="." method="_on_quarter_volume_button_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/HalfVolumeButton" to="." method="_on_half_volume_button_pressed"]
-[connection signal="toggled" from="MarginContainer/HBoxContainer/LoopButton" to="." method="_on_loop_button_toggled"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/FadeOutButton" to="." method="_on_fade_out_button_pressed"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/InfoContainer/PauseButton" to="." method="_on_pause_button_toggled"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/InfoContainer/StopButton" to="." method="_on_stop_button_pressed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/ControlsContainer/VolumeContainer/VolumeSlider" to="." method="_on_volume_slider_value_changed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ControlsContainer/VolumeContainer/QuarterVolumeButton" to="." method="_on_volume_preset_pressed" binds= [25.0]]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ControlsContainer/VolumeContainer/HalfVolumeButton" to="." method="_on_volume_preset_pressed" binds= [50.0]]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ControlsContainer/FadeContainer/FadeInButton" to="." method="_on_fade_in_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ControlsContainer/FadeContainer/FadeOutButton" to="." method="_on_fade_out_button_pressed"]
